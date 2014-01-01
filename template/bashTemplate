@@ -1,0 +1,49 @@
+#!/bin/bash
+# Argument = -t test -r server -p password -v
+
+usage()
+{
+cat << EOF
+usage: $0 options
+
+Template to create a bash script to do something
+
+OPTIONS:
+   -h      Show this message
+   -r	   Repository name
+   -u	   Username      
+EOF
+}
+
+REPO=
+USER=
+while getopts “hr:u:” OPTION
+do
+     case $OPTION in
+         h)
+             usage
+             exit 1
+             ;;
+         r)
+             REPO=$OPTARG
+             ;;
+         u)
+             USER=$OPTARG
+             ;;
+         ?)
+             usage
+             exit
+             ;;
+     esac
+done
+
+if [[ -z $REPO ]] || [[ -z $USER ]] 
+then
+     usage
+     exit 1
+fi
+
+mkdir $REPO
+cd $REPO
+git init
+git remote add git@github.com:$USER/$REPO.git
