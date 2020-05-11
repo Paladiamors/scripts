@@ -7,6 +7,8 @@ alias gc='git commit -m'
 alias gp='git push' 
 
 
+#add the code in .bashrc if you want 
+#it to automatically load the script on loadup
 function reload-preferences { 
 for f in ~/scripts/*.sh; do
    . $f
