@@ -15,6 +15,15 @@ for f in ~/scripts/*.sh; do
 done
 }
 
+function code {
+    if [[ $OSTYPE == "darwin"* ]]; then
+        /Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron $1
+    else
+        # add something for the ubuntu case
+        echo "test"
+    fi
+}
+
 function docker-bash {
     docker exec -it $1 sh
 }
