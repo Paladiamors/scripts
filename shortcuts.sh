@@ -16,6 +16,8 @@ done
 }
 
 function code {
+    # https://stackoverflow.com/questions/394230/how-to-detect-the-os-from-a-bash-script
+    # see this to add os types
     if [[ $OSTYPE == "darwin"* ]]; then
         /Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron $1
     else
