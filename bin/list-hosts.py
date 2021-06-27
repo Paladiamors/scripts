@@ -55,7 +55,10 @@ def get_hosts():
         if not mac and address in local_interface_map:
             mac = get_mac_address(interface=local_interface_map[address])
 
-        vendor = vendor_lookup.lookup(mac) if mac else None
+        try:
+            vendor = vendor_lookup.lookup(mac) if mac else None
+        except KeyError:
+            print("error processing mac for", address)
         hosts.append({"ip": address, "mac": mac, "vendor": vendor})
     print("mac address acquired", round(time.time() - start, 2))
     return hosts
